@@ -1,0 +1,33 @@
+/**
+ * @param {string} ransomNote
+ * @param {string} magazine
+ * @return {boolean}
+ */
+var canConstruct = function(ransomNote, magazine) {
+    var ransomNotesLetter = [...ransomNote];
+    var magazineLetter =[...magazine];
+    var newObject ={}
+    var check = true;
+    
+    for(var i = 0;i<magazineLetter.length;i++){
+    !newObject[magazineLetter[i]]?newObject[magazineLetter[i]]=1:newObject[magazineLetter[i]] +=1;
+    }
+    
+    if(magazineLetter.length>=ransomNotesLetter.length){
+        for(var i = 0;i<ransomNotesLetter.length;i++){
+           
+                if(newObject[ransomNotesLetter[i]] >0){                    
+                newObject[ransomNotesLetter[i]]-=1;
+                }
+                else{
+                    check = false;
+                }
+            }                  
+    }   
+    else{
+        check = false;
+    }
+    
+    return check;
+    
+};
